@@ -77,5 +77,36 @@ public class MarsRoverMovesToExpectedDestinationTest
         Assert.IsTrue(marsRover.Direction == "N");
     }
 
+    [Test]
+    public void MarsRoverFacesNorthMovesForwardIncrementedYCoordinate()
+    {
+        Rover marsRover = new Rover(0, 0, "N");
+        marsRover.TakeInstructions("F");
+        Assert.IsTrue(marsRover.Y == 1);
+    }
+
+    [Test]
+    public void MarsRoverFacesSouthMovesForwardDecrementedYCoordinate()
+    {
+        Rover marsRover = new Rover(0, 0, "S");
+        marsRover.TakeInstructions("F");
+        Assert.IsTrue(marsRover.Y == -1);
+    }
+
+    [Test]
+    public void MarsRoverFacesEastMovesForwardIncrementXCoordinate()
+    {
+        Rover marsRover = new Rover(0, 0, "E");
+        marsRover.TakeInstructions("F");
+        Assert.IsTrue(marsRover.X == 1);
+    }
+
+    [Test]
+    public void MarsRoverFacesWestMovesForwardDecrementXCoordinate()
+    {
+        Rover marsRover = new Rover(0, 0, "W");
+        marsRover.TakeInstructions("F");
+        Assert.IsTrue(marsRover.X == -1);
+    }
 }
 
