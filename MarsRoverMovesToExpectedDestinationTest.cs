@@ -1,77 +1,81 @@
 
-namespace MarsRoverTestProject
+using MarsRover.Model;
+
+namespace MarsRoverTestProject;
+
+public class MarsRoverMovesToExpectedDestinationTest
 {
-    public class MarsRoverMovesToExpectedDestinationTest
+    [Test]
+    public void MarsRoverFacesNorthTurnsRightFacesEast()
     {
-        [Test]
-        public void MarsRoverFacesNorthTurnsRightFacesEast()
-        {
-            MarsRover marsRover = new MarsRover(0, 0, "N");
-            marsRover.TakeInstructions("R");
+        Rover marsRover = new Rover(0, 0, "N");
+        marsRover.TakeInstructions("R");
 
-            Assert.IsTrue(marsRover.Direction == "E");
-        }
-
-        [Test]
-        public void MarsRoverFacesEastTurnsRightFacesSouth()
-        {
-            MarsRover marsRover = new MarsRover(0, 0, "E");
-            marsRover.TakeInstructions("R");
-
-            Assert.IsTrue(marsRover.Direction == "S");
-        }
-
-        [Test]
-        public void MarsRoverFacesSouthTurnsRightFacesWest()
-        {
-            MarsRover marsRover = new MarsRover(0, 0, "S");
-            marsRover.TakeInstructions("R");
-
-            Assert.IsTrue(marsRover.Direction == "W");
-        }
-
-        [Test]
-        public void MarsRoverFacesWestTurnsRightFacesNorth()
-        {
-            MarsRover marsRover = new MarsRover(0, 0, "W");
-            marsRover.TakeInstructions("R");
-
-            Assert.IsTrue(marsRover.Direction == "N");
-        }
-
+        Assert.IsTrue(marsRover.Direction == "E");
     }
 
-    internal class MarsRover
+    [Test]
+    public void MarsRoverFacesEastTurnsRightFacesSouth()
     {
-        public MarsRover(int x, int y, string direction)
-        {
-            Direction = direction;
-        }
+        Rover marsRover = new Rover(0, 0, "E");
+        marsRover.TakeInstructions("R");
 
-        public string Direction { get; set; }
-
-        public void TakeInstructions(string instructionSet)
-        {
-            ChangeDirectionRight();
-        }
-
-        private void ChangeDirectionRight()
-        {
-            switch(Direction)
-            {
-                case "N":
-                    Direction = "E";
-                    break;
-                case "E":
-                    Direction = "S";
-                    break;
-                case "S":
-                    Direction = "W";
-                    break;
-                case "W":
-                    Direction = "N";
-                    break;
-            }
-        }
+        Assert.IsTrue(marsRover.Direction == "S");
     }
+
+    [Test]
+    public void MarsRoverFacesSouthTurnsRightFacesWest()
+    {
+        Rover marsRover = new Rover(0, 0, "S");
+        marsRover.TakeInstructions("R");
+
+        Assert.IsTrue(marsRover.Direction == "W");
+    }
+
+    [Test]
+    public void MarsRoverFacesWestTurnsRightFacesNorth()
+    {
+        Rover marsRover = new Rover(0, 0, "W");
+        marsRover.TakeInstructions("R");
+
+        Assert.IsTrue(marsRover.Direction == "N");
+    }
+
+    [Test]
+    public void MarsRoverFacesNorthTurnsLeftFacesWest()
+    {
+        Rover marsRover = new Rover(0, 0, "N");
+        marsRover.TakeInstructions("L");
+
+        Assert.IsTrue(marsRover.Direction == "W");
+    }
+
+    [Test]
+    public void MarsRoverFacesWestTurnsLeftFacesSouth()
+    {
+        Rover marsRover = new Rover(0, 0, "W");
+        marsRover.TakeInstructions("L");
+
+        Assert.IsTrue(marsRover.Direction == "S");
+    }
+
+    [Test]
+    public void MarsRoverFacesSouthTurnsLeftFacesEast()
+    {
+        Rover marsRover = new Rover(0, 0, "S");
+        marsRover.TakeInstructions("L");
+
+        Assert.IsTrue(marsRover.Direction == "E");
+    }
+
+    [Test]
+    public void MarsRoverFacesEastTurnsLeftFacesNorth()
+    {
+        Rover marsRover = new Rover(0, 0, "E");
+        marsRover.TakeInstructions("L");
+
+        Assert.IsTrue(marsRover.Direction == "N");
+    }
+
 }
+
