@@ -14,26 +14,30 @@ public class Rover
     public int Y { get; set; }
 
     public int X { get; set; }
-
+    
     public void TakeInstructions(string instructionSet)
     {
-        if (instructionSet == "R")
+        foreach (char instruction in instructionSet)
         {
-            ChangeDirectionRight();
-        }
-        else if (instructionSet == "L")
-        {
-            ChangeDirectionLeft();
-        }
-        else if(instructionSet == "F")
-        {
-            if(Direction == "N" || Direction == "S")
+
+            if (instruction == 'R')
             {
-                ChangeCoordinateY(Direction);
+                ChangeDirectionRight();
             }
-            else if (Direction == "E" || Direction == "W")
+            else if (instruction == 'L')
             {
-                ChangeCoordinateX(Direction);
+                ChangeDirectionLeft();
+            }
+            else if (instruction == 'F')
+            {
+                if (Direction == "N" || Direction == "S")
+                {
+                    ChangeCoordinateY(Direction);
+                }
+                else if (Direction == "E" || Direction == "W")
+                {
+                    ChangeCoordinateX(Direction);
+                }
             }
         }
     }
